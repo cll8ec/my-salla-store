@@ -16,50 +16,63 @@
                 spotlight.y +
                 'px, black 0%, transparent ' + (isDark ? '600px' : '400px') + ');'
         ">
-        <?php if (isset($component)) { $__componentOriginal2a45ee13943eadc15ee63d255f492356 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal2a45ee13943eadc15ee63d255f492356 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'laravel-exceptions-renderer::components.icons.laravel-ascii','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+        <?php
+use Illuminate\View\AnonymousComponent;
+        use Illuminate\View\ComponentAttributeBag;
+        use Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys;
+
+        if (isset($component)) {
+            $__componentOriginal2a45ee13943eadc15ee63d255f492356 = $component;
+        } ?>
+<?php if (isset($attributes)) {
+            $__attributesOriginal2a45ee13943eadc15ee63d255f492356 = $attributes;
+        } ?>
+<?php $component = AnonymousComponent::resolve(['view' => 'laravel-exceptions-renderer::components.icons.laravel-ascii', 'data' => []] + (isset($attributes) && $attributes instanceof ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('laravel-exceptions-renderer::icons.laravel-ascii'); ?>
-<?php if ($component->shouldRender()): ?>
+<?php if ($component->shouldRender()) { ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
+<?php if (isset($attributes) && $attributes instanceof ComponentAttributeBag) { ?>
+<?php $attributes = $attributes->except(AnonymousComponent::ignoredParameterNames()); ?>
+<?php } ?>
 <?php $component->withAttributes([]); ?>
-<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+<?php SupportCompiledWireKeys::processComponentKey($component); ?>
 
 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal2a45ee13943eadc15ee63d255f492356)): ?>
+<?php } ?>
+<?php if (isset($__attributesOriginal2a45ee13943eadc15ee63d255f492356)) { ?>
 <?php $attributes = $__attributesOriginal2a45ee13943eadc15ee63d255f492356; ?>
 <?php unset($__attributesOriginal2a45ee13943eadc15ee63d255f492356); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal2a45ee13943eadc15ee63d255f492356)): ?>
+<?php } ?>
+<?php if (isset($__componentOriginal2a45ee13943eadc15ee63d255f492356)) { ?>
 <?php $component = $__componentOriginal2a45ee13943eadc15ee63d255f492356; ?>
 <?php unset($__componentOriginal2a45ee13943eadc15ee63d255f492356); ?>
-<?php endif; ?>
+<?php } ?>
     </div>
-    <?php if (isset($component)) { $__componentOriginal2a45ee13943eadc15ee63d255f492356 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal2a45ee13943eadc15ee63d255f492356 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'laravel-exceptions-renderer::components.icons.laravel-ascii','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+    <?php if (isset($component)) {
+        $__componentOriginal2a45ee13943eadc15ee63d255f492356 = $component;
+    } ?>
+<?php if (isset($attributes)) {
+        $__attributesOriginal2a45ee13943eadc15ee63d255f492356 = $attributes;
+    } ?>
+<?php $component = AnonymousComponent::resolve(['view' => 'laravel-exceptions-renderer::components.icons.laravel-ascii', 'data' => []] + (isset($attributes) && $attributes instanceof ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('laravel-exceptions-renderer::icons.laravel-ascii'); ?>
-<?php if ($component->shouldRender()): ?>
+<?php if ($component->shouldRender()) { ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
+<?php if (isset($attributes) && $attributes instanceof ComponentAttributeBag) { ?>
+<?php $attributes = $attributes->except(AnonymousComponent::ignoredParameterNames()); ?>
+<?php } ?>
 <?php $component->withAttributes([]); ?>
-<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+<?php SupportCompiledWireKeys::processComponentKey($component); ?>
 
 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal2a45ee13943eadc15ee63d255f492356)): ?>
+<?php } ?>
+<?php if (isset($__attributesOriginal2a45ee13943eadc15ee63d255f492356)) { ?>
 <?php $attributes = $__attributesOriginal2a45ee13943eadc15ee63d255f492356; ?>
 <?php unset($__attributesOriginal2a45ee13943eadc15ee63d255f492356); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal2a45ee13943eadc15ee63d255f492356)): ?>
+<?php } ?>
+<?php if (isset($__componentOriginal2a45ee13943eadc15ee63d255f492356)) { ?>
 <?php $component = $__componentOriginal2a45ee13943eadc15ee63d255f492356; ?>
 <?php unset($__componentOriginal2a45ee13943eadc15ee63d255f492356); ?>
-<?php endif; ?>
+<?php } ?>
 </div>
 <?php /**PATH /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Providers/../resources/exceptions/renderer/components/laravel-ascii-spotlight.blade.php ENDPATH**/ ?>

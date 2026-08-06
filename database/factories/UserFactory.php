@@ -1,5 +1,6 @@
 <?php
-  declare(strict_types=1);
+
+declare(strict_types=1);
 
 namespace Database\Factories;
 
@@ -37,4 +38,13 @@ class UserFactory extends Factory
     public function editor(): static { return $this->afterCreating(fn (User $u) => $u->assignRole(RoleCode::Editor)); }
     public function reviewer(): static { return $this->afterCreating(fn (User $u) => $u->assignRole(RoleCode::Reviewer)); }
     public function customer(): static { return $this->afterCreating(fn (User $u) => $u->assignRole(RoleCode::Customer)); }
+
+    public function withTwoFactor(): static
+    {
+        return $this->state(fn () => [
+            'two_factor_secret' => 'test-secret',
+            'two_factor_recovery_codes' => json_encode(['code1', 'code2']),
+            'two_factor_confirmed_at' => now(),
+        ]);
+    }
 }
