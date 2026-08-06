@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Commerce\Models;
 
+use App\Domains\Catalog\Models\Product;
+use App\Domains\Catalog\Models\ProductVariant;
 use App\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,11 +44,11 @@ class OrderItem extends BaseModel
 
     public function product(): BelongsTo
     {
-        return $this->belongsTo(\App\Domains\Catalog\Models\Product::class, 'product_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     public function variant(): BelongsTo
     {
-        return $this->belongsTo(\App\Domains\Catalog\Models\ProductVariant::class, 'product_variant_id');
+        return $this->belongsTo(ProductVariant::class, 'product_variant_id');
     }
 }

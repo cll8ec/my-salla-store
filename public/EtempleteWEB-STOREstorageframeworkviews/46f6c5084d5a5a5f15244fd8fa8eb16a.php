@@ -1,7 +1,14 @@
-<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
+<?php
+use Illuminate\Support\Arr;
+use Illuminate\Support\Js;
+use Illuminate\View\AnonymousComponent;
+use Illuminate\View\ComponentAttributeBag;
+use Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys;
+
+$attributes ??= new ComponentAttributeBag;
 
 $__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['title', 'markdown']));
+$__propNames = ComponentAttributeBag::extractPropNames((['title', 'markdown']));
 
 foreach ($attributes->all() as $__key => $__value) {
     if (in_array($__key, $__propNames)) {
@@ -11,7 +18,7 @@ foreach ($attributes->all() as $__key => $__value) {
     }
 }
 
-$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
+$attributes = new ComponentAttributeBag($__newAttributes);
 
 unset($__propNames);
 unset($__newAttributes);
@@ -23,13 +30,15 @@ foreach (array_filter((['title', 'markdown']), 'is_string', ARRAY_FILTER_USE_KEY
 $__defined_vars = get_defined_vars();
 
 foreach ($attributes->all() as $__key => $__value) {
-    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
+    if (array_key_exists($__key, $__defined_vars)) {
+        unset($$__key);
+    }
 }
 
 unset($__defined_vars, $__key, $__value); ?>
 
 <script>
-    const markdown = <?php echo e(Illuminate\Support\Js::from($markdown)); ?>
+    const markdown = <?php echo e(Js::from($markdown)); ?>
 
 </script>
 
@@ -63,56 +72,64 @@ unset($__defined_vars, $__key, $__value); ?>
 
     <button
         x-cloak
-        class="<?php echo \Illuminate\Support\Arr::toCssClasses([
-            "text-sm rounded-md border px-3 h-8 flex items-center gap-2 transition-colors duration-200 ease-in-out cursor-pointer shadow-xs",
-            "text-neutral-600 dark:text-neutral-400 bg-white/5 border-neutral-200 hover:bg-neutral-100 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10",
+        class="<?php echo Arr::toCssClasses([
+            'text-sm rounded-md border px-3 h-8 flex items-center gap-2 transition-colors duration-200 ease-in-out cursor-pointer shadow-xs',
+            'text-neutral-600 dark:text-neutral-400 bg-white/5 border-neutral-200 hover:bg-neutral-100 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10',
         ]); ?>"
         @click="copyToClipboard()"
     >
-        <?php if (isset($component)) { $__componentOriginal8894ff2e6e6bd543865d608162806b35 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal8894ff2e6e6bd543865d608162806b35 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'laravel-exceptions-renderer::components.icons.copy','data' => ['class' => 'w-3 h-3','xShow' => '!copied']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+        <?php if (isset($component)) {
+            $__componentOriginal8894ff2e6e6bd543865d608162806b35 = $component;
+        } ?>
+<?php if (isset($attributes)) {
+            $__attributesOriginal8894ff2e6e6bd543865d608162806b35 = $attributes;
+        } ?>
+<?php $component = AnonymousComponent::resolve(['view' => 'laravel-exceptions-renderer::components.icons.copy', 'data' => ['class' => 'w-3 h-3', 'xShow' => '!copied']] + (isset($attributes) && $attributes instanceof ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('laravel-exceptions-renderer::icons.copy'); ?>
-<?php if ($component->shouldRender()): ?>
+<?php if ($component->shouldRender()) { ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['class' => 'w-3 h-3','x-show' => '!copied']); ?>
-<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+<?php if (isset($attributes) && $attributes instanceof ComponentAttributeBag) { ?>
+<?php $attributes = $attributes->except(AnonymousComponent::ignoredParameterNames()); ?>
+<?php } ?>
+<?php $component->withAttributes(['class' => 'w-3 h-3', 'x-show' => '!copied']); ?>
+<?php SupportCompiledWireKeys::processComponentKey($component); ?>
 
 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal8894ff2e6e6bd543865d608162806b35)): ?>
+<?php } ?>
+<?php if (isset($__attributesOriginal8894ff2e6e6bd543865d608162806b35)) { ?>
 <?php $attributes = $__attributesOriginal8894ff2e6e6bd543865d608162806b35; ?>
 <?php unset($__attributesOriginal8894ff2e6e6bd543865d608162806b35); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal8894ff2e6e6bd543865d608162806b35)): ?>
+<?php } ?>
+<?php if (isset($__componentOriginal8894ff2e6e6bd543865d608162806b35)) { ?>
 <?php $component = $__componentOriginal8894ff2e6e6bd543865d608162806b35; ?>
 <?php unset($__componentOriginal8894ff2e6e6bd543865d608162806b35); ?>
-<?php endif; ?>
-        <?php if (isset($component)) { $__componentOriginal394a4f59b8774713925fcf456ba90b57 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal394a4f59b8774713925fcf456ba90b57 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'laravel-exceptions-renderer::components.icons.check','data' => ['class' => 'w-3 h-3 text-emerald-500','xShow' => 'copied']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php } ?>
+        <?php if (isset($component)) {
+            $__componentOriginal394a4f59b8774713925fcf456ba90b57 = $component;
+        } ?>
+<?php if (isset($attributes)) {
+            $__attributesOriginal394a4f59b8774713925fcf456ba90b57 = $attributes;
+        } ?>
+<?php $component = AnonymousComponent::resolve(['view' => 'laravel-exceptions-renderer::components.icons.check', 'data' => ['class' => 'w-3 h-3 text-emerald-500', 'xShow' => 'copied']] + (isset($attributes) && $attributes instanceof ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('laravel-exceptions-renderer::icons.check'); ?>
-<?php if ($component->shouldRender()): ?>
+<?php if ($component->shouldRender()) { ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['class' => 'w-3 h-3 text-emerald-500','x-show' => 'copied']); ?>
-<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+<?php if (isset($attributes) && $attributes instanceof ComponentAttributeBag) { ?>
+<?php $attributes = $attributes->except(AnonymousComponent::ignoredParameterNames()); ?>
+<?php } ?>
+<?php $component->withAttributes(['class' => 'w-3 h-3 text-emerald-500', 'x-show' => 'copied']); ?>
+<?php SupportCompiledWireKeys::processComponentKey($component); ?>
 
 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal394a4f59b8774713925fcf456ba90b57)): ?>
+<?php } ?>
+<?php if (isset($__attributesOriginal394a4f59b8774713925fcf456ba90b57)) { ?>
 <?php $attributes = $__attributesOriginal394a4f59b8774713925fcf456ba90b57; ?>
 <?php unset($__attributesOriginal394a4f59b8774713925fcf456ba90b57); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal394a4f59b8774713925fcf456ba90b57)): ?>
+<?php } ?>
+<?php if (isset($__componentOriginal394a4f59b8774713925fcf456ba90b57)) { ?>
 <?php $component = $__componentOriginal394a4f59b8774713925fcf456ba90b57; ?>
 <?php unset($__componentOriginal394a4f59b8774713925fcf456ba90b57); ?>
-<?php endif; ?>
+<?php } ?>
         <span x-text="copied ? 'Copied to clipboard' : 'Copy as Markdown'"></span>
     </button>
 </div>

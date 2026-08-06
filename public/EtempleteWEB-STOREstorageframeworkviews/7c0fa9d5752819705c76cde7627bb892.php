@@ -1,7 +1,11 @@
-<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
+<?php
+use Illuminate\View\ComponentAttributeBag;
+use Livewire\Mechanisms\ExtendBlade\ExtendBlade;
+
+$attributes ??= new ComponentAttributeBag;
 
 $__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['frame', 'direction' => 'ltr']));
+$__propNames = ComponentAttributeBag::extractPropNames((['frame', 'direction' => 'ltr']));
 
 foreach ($attributes->all() as $__key => $__value) {
     if (in_array($__key, $__propNames)) {
@@ -11,7 +15,7 @@ foreach ($attributes->all() as $__key => $__value) {
     }
 }
 
-$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
+$attributes = new ComponentAttributeBag($__newAttributes);
 
 unset($__propNames);
 unset($__newAttributes);
@@ -23,14 +27,16 @@ foreach (array_filter((['frame', 'direction' => 'ltr']), 'is_string', ARRAY_FILT
 $__defined_vars = get_defined_vars();
 
 foreach ($attributes->all() as $__key => $__value) {
-    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
+    if (array_key_exists($__key, $__defined_vars)) {
+        unset($$__key);
+    }
 }
 
 unset($__defined_vars, $__key, $__value); ?>
 
 <?php
     $file = $frame->file();
-    $line = $frame->line();
+$line = $frame->line();
 ?>
 
 <div
@@ -39,13 +45,13 @@ unset($__defined_vars, $__key, $__value); ?>
     dir="<?php echo e($direction); ?>"
 >
     <span data-tippy-content="<?php echo e($file); ?>:<?php echo e($line); ?>">
-        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(config('app.editor')): ?>
+        <?php if (ExtendBlade::isRenderingLivewireComponent()) { ?><!--[if BLOCK]><![endif]--><?php } ?><?php if (config('app.editor')) { ?>
             <a href="<?php echo e($frame->editorHref()); ?>" @click.stop>
                 <span class="hover:underline decoration-neutral-400"><?php echo e($file); ?></span><span class="text-neutral-500">:<?php echo e($line); ?></span>
             </a>
-        <?php else: ?>
+        <?php } else { ?>
             <?php echo e($file); ?><span class="text-neutral-500">:<?php echo e($line); ?></span>
-        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+        <?php } ?><?php if (ExtendBlade::isRenderingLivewireComponent()) { ?><!--[if ENDBLOCK]><![endif]--><?php } ?>
     </span>
 </div>
 <?php /**PATH /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Providers/../resources/exceptions/renderer/components/file-with-line.blade.php ENDPATH**/ ?>

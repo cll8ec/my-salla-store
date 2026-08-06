@@ -113,7 +113,7 @@ final class RoleSeeder extends Seeder
                 $parts = explode('.', $permissionCode, 2);
                 $group = $parts[0] ?? 'general';
 
-                if (!isset($permissionIdsByCode[$permissionCode])) {
+                if (! isset($permissionIdsByCode[$permissionCode])) {
                     /** @var Permission $permission */
                     $permission = Permission::updateOrCreate(
                         ['code' => $permissionCode],

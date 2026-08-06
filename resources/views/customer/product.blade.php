@@ -46,17 +46,21 @@
                 {!! $product->description ?? '<p>منتج فاخر من تشكيلة رافال المميزة.</p>' !!}
             </div>
 
-            <form action="/cart/add/{{ $product->id }}" method="POST" class="space-y-3">
-                @csrf
+            <div class="space-y-3">
                 <div class="flex items-stretch gap-3">
                     <div class="flex items-center border border-gray-200 rounded-xl">
-                        <button type="button" onclick="var q=document.querySelector('input[name=quantity]');q.value=Math.max(1,parseInt(q.value)-1)" class="w-10 h-12 hover:bg-gray-50">−</button>
-                        <input type="number" name="quantity" value="1" min="1" max="{{ $product->stock ?? 99 }}" class="w-16 text-center border-0 focus:ring-0">
-                        <button type="button" onclick="var q=document.querySelector('input[name=quantity]');q.value=Math.min({{ $product->stock ?? 99 }},parseInt(q.value)+1)" class="w-10 h-12 hover:bg-gray-50">+</button>
+                        <button type="button" @click="qty = Math.max(1, qty - 1)" class="w-10 h-12 hover:bg-gray-50">−</button>
+                        <input type="number" name="quantity" x-model.number="qty" min="1" max="{{ $product->stock ?? 99 }}" class="w-16 text-center border-0 focus:ring-0">
+                        <button type="button" @click="qty = Math.min({{ $product->stock ?? 99 }}, qty + 1)" class="w-10 h-12 hover:bg-gray-50">+</button>
                     </div>
-                    <button type="submit" class="btn-primary flex-1 py-3">🛒 أضف إلى السلة</button>
+                    <button type="button" @click="$store.cart.add({
+                        id: {{ $product->id }},
+                        name: '{{ addslashes($product->name) }}',
+                        price: {{ $product->sale_price ?? $product->price }},
+                        thumbnail_url: '{{ $product->thumbnail_url }}'
+                    }, qty)" class="btn-primary flex-1 py-3">🛒 أضف إلى السلة</button>
                 </div>
-            </form>
+            </div>
 
             <div class="mt-8 grid grid-cols-2 gap-3 text-sm">
                 <div class="flex items-center gap-2 text-gray-600"><span>🚚</span> توصيل سريع</div>

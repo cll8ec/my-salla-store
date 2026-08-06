@@ -23,6 +23,12 @@ return new class extends Migration {
             $table->rememberToken();
             $table->foreignId('created_by_id')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('updated_by_id')->nullable()->constrained('users')->nullOnDelete();
+
+            // Fortify 2FA Columns
+            $table->text('two_factor_secret')->nullable();
+            $table->text('two_factor_recovery_codes')->nullable();
+            $table->timestamp('two_factor_confirmed_at')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
             $table->index('deleted_at');

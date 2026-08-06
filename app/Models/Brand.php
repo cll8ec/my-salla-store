@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\SyncStatus;
+use Carbon\Carbon;
 use Database\Factories\BrandFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,9 +18,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string|null $logo
  * @property string|null $description
  * @property SyncStatus $sync_status
- * @property \Carbon\Carbon|null $synced_at
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property Carbon|null $synced_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 final class Brand extends Model
 {

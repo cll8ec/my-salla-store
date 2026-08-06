@@ -61,7 +61,13 @@
                 @endif
             </div>
 
-            <button class="w-9 h-9 rounded-xl bg-brand-50 hover:bg-brand-600 hover:text-white text-brand-600 flex items-center justify-center transition"
+            <button @click.prevent="$store.cart.add({
+                        id: {{ $product->id }},
+                        name: '{{ addslashes($product->name) }}',
+                        price: {{ $product->sale_price ?? $product->price ?? 0 }},
+                        thumbnail_url: '{{ $image }}'
+                    })"
+                    class="w-9 h-9 rounded-xl bg-brand-50 hover:bg-brand-600 hover:text-white text-brand-600 flex items-center justify-center transition"
                     aria-label="أضف للسلة">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
